@@ -24,6 +24,6 @@ RUN adduser -D $USER -h $HOME -u $UID
 USER ${USER}
 WORKDIR $HOME
 
-COPY composer.json ${HOME}/composer.json 
+COPY composer.json ./
 RUN composer install 
 
