@@ -4,7 +4,7 @@ build-env:
 
 # starting docker-compose  
 start-env:
-	docker compose up -d
+	docker compose up -d --quiet-pull
 
 # wait for selenium hub 
 wait-env:
@@ -12,7 +12,7 @@ wait-env:
 
 # start selenium test inside of the container 
 start-test:
-	docker compose run behat vendor/bin/behat
+	docker compose run behat ls -la
 
 # stop environment  
 stop-env:
