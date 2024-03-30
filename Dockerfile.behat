@@ -25,3 +25,6 @@ USER ${USER}
 WORKDIR $HOME
 
 COPY composer.json ./
+COPY composer.lock ./
+
+RUN composer install
