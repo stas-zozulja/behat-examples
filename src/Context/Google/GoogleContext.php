@@ -1,4 +1,4 @@
-<?php 
+<?php declare(strict_types=1);
 
 namespace Zozulia\Testsuite\Context\Google;
 
@@ -6,11 +6,10 @@ use Behat\MinkExtension\Context\RawMinkContext;
 
 class GoogleContext extends RawMinkContext
 {
-
     /**
      * @Given I click cookie settings button :buttonText
      */
-    public function iClickCookieSettingsButton(string $buttonText)
+    public function iClickCookieSettingsButton(string $buttonText): void
     {
         $button = $this->getSession()->getPage()->find(
             'xpath',
@@ -23,7 +22,7 @@ class GoogleContext extends RawMinkContext
     /**
      * @Then I should see cookie settings button :buttonText
      */
-    public function iShouldSeeCookieSettingsButton(string $buttonText)
+    public function iShouldSeeCookieSettingsButton(string $buttonText): void
     {
         $this->assertSession()->elementExists(
             'xpath', 
@@ -34,7 +33,7 @@ class GoogleContext extends RawMinkContext
     /**
      * @Given I switch to locale :locale
      */
-    public function iSwitchToLocale($locale)
+    public function iSwitchToLocale(string $locale): void
     {
         $this->getSession()->reset();
         $url = $this->getSession()->getCurrentUrl();
@@ -50,7 +49,7 @@ class GoogleContext extends RawMinkContext
     /**
      * @Given I wait for the page to be loaded
      */
-    public function iWaitForThePageToBeLoaded(int $timeout = 10000)
+    public function iWaitForThePageToBeLoaded(int $timeout = 10000): void
     {
         $this->getSession()->wait($timeout, "document.readyState === 'complete'");
     }
@@ -58,14 +57,14 @@ class GoogleContext extends RawMinkContext
     /**
      * @Given I am not logged in
      */
-    public function iAmNotLoggedIn()
+    public function iAmNotLoggedIn(): void
     {
     }
 
     /**
      * @Then I should see the search bar with title :arg1
      */
-    public function iShouldSeeTheSearchBarWithTitle(string $title)
+    public function iShouldSeeTheSearchBarWithTitle(string $title): void
     {
         $this->assertSession()->elementExists(
             'css', 
@@ -76,26 +75,18 @@ class GoogleContext extends RawMinkContext
     /**
      * @Then I should see the button :title
      */
-    public function iShouldSeeTheButton(string $title)
+    public function iShouldSeeTheButton(string $title): void
     {
         $this->assertSession()->elementExists(
             'css', 
             sprintf('input[type="submit"][value="%s"]', $title)
         );
-    }    
-
-    /**
-     * @Then I should see the :arg1 button with text :arg2
-     */
-    public function iShouldSeeTheButtonWithText($arg1, $arg2)
-    {
-
     }
 
     /**
      * @Then I should see the Google logo
      */
-    public function iShouldSeeTheGoogleLogo()
+    public function iShouldSeeTheGoogleLogo(): void
     {
         $this->assertSession()->elementExists('css', 'img[alt="Google"]');
     }

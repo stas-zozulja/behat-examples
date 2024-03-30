@@ -22,6 +22,5 @@ default:
       paths:
         - ./scenarios/google
       contexts:
-        - "Behat\\MinkExtension\\Context\\MinkContext"
-        - "Zozulia\\Testsuite\\Context\\Google\\GoogleContext"
-           
+        - Behat\MinkExtension\Context\MinkContext
+        - Zozulia\Testsuite\Context\Google\GoogleContext
