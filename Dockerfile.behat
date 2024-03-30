@@ -25,5 +25,3 @@ USER ${USER}
 WORKDIR $HOME
 
 COPY composer.json ./
-RUN composer install 
-
