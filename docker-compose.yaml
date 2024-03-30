@@ -52,7 +52,6 @@ services:
       - ./config:/home/${TESTER_USER}/config
       - ./src:/home/${TESTER_USER}/src
       - ./scenarios:/home/${TESTER_USER}/scenarios
-      - ./vendor:/home/${TESTER_USER}/vendor 
     build:
       dockerfile: ./Dockerfile.behat
       args:
