@@ -12,7 +12,7 @@ wait-env:
 
 # start selenium test inside of the container 
 start-test:
-	docker compose run behat ls -la
+	docker compose run behat vendor/bin/behat
 
 # stop environment  
 stop-env:
