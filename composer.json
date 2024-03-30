@@ -1,0 +1,18 @@
+{
+    "name": "zouzlia/testsuite",
+    "version": "0.0.1",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Zozulia\\Testsuite\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "behat/behat": "^3.14",
+        "friends-of-behat/mink-extension": "^2.7",
+        "ediasoft/mink-selenium4-driver": "^1.0",
+        "instaclick/php-webdriver": "2.0.x-dev"
+    }
+}

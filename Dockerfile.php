@@ -1,0 +1,29 @@
+FROM php:8.3-alpine
+
+# install required dependecies
+RUN apk add --no-cache \
+    bash \
+    curl \
+    git \
+    unzip \
+    libzip-dev \
+    && rm -rf /var/cache/apk/*
+
+RUN docker-php-ext-install zip
+
+# copy composer binary 
+COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+
+# create unprivileged user
+ARG UID=1000
+ARG USER=default
+ARG GROUP=default
+ARG HOME=/home/$USER
+
+RUN adduser -D $USER -h $HOME -u $UID 
+USER ${USER}
+WORKDIR $HOME
+
+COPY composer.json ${HOME}/composer.json 
+RUN composer install 
+

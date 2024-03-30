@@ -1,0 +1,59 @@
+services:
+  chrome:
+    image: selenium/node-chrome:4.19.0-20240328
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - 7900:7900
+
+  edge:
+    image: selenium/node-edge:4.19.0-20240328
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - 7901:7900
+
+  firefox:
+    image: selenium/node-firefox:4.19.0-20240328
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    ports:
+      - 7902:7900
+
+  selenium-hub:
+    image: selenium/hub:4.19.0-20240328
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  behat:
+    depends_on:
+      - selenium-hub
+    volumes:
+      - ./composer.json:/home/${TESTER_USER}/composer.json
+      - ./composer.lock:/home/${TESTER_USER}/composer.lock
+      - ./config:/home/${TESTER_USER}/config
+      - ./src:/home/${TESTER_USER}/src
+      - ./scenarios:/home/${TESTER_USER}/scenarios
+      - ./vendor:/home/${TESTER_USER}/vendor 
+    build:
+      dockerfile: ./Dockerfile.behat
+      args:
+        - USER=${TESTER_USER}
