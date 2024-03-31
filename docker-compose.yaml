@@ -60,4 +60,7 @@ services:
     build:
       dockerfile: ./Dockerfile.behat
       args:
+        - GROUP=${TESTER_GROUP}
         - USER=${TESTER_USER}
+        - GID=${GID}
+        - UID=${UID}

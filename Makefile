@@ -1,10 +1,20 @@
+.PHONY: build-env start-env wait-env run-tests stop-env
+
+# Set the default environment to dev
+ENV ?= dev
+COMPOSE_ENV := .env
+ifeq ($(ENV), ci)
+    COMPOSE_ENV := .env.ci
+endif
+
+
 # building docker images 
 build-env:
-	docker compose build
+	docker compose --env-file=$(COMPOSE_ENV) build
 
 # starting docker-compose  
 start-env:
-	docker compose up -d --quiet-pull
+	docker compose --env-file=$(COMPOSE_ENV) up -d --quiet-pull
 
 # wait for selenium hub 
 wait-env:
@@ -12,8 +22,8 @@ wait-env:
 
 # start selenium tests
 run-tests:
-	docker compose exec behat vendor/bin/behat --profile=google
+	docker compose --env-file=$(COMPOSE_ENV) exec behat vendor/bin/behat --profile=google
 
 # stop environment  
 stop-env:
-	docker compose down
+	docker compose --env-file=$(COMPOSE_ENV) down

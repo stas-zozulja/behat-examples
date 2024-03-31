@@ -15,16 +15,18 @@ RUN docker-php-ext-install zip
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 
 # create unprivileged user
+ARG GID=1000
 ARG UID=1000
+ARG GROUP=default
 ARG USER=default
 ARG HOME=/home/$USER
 
-RUN adduser -D $USER -h $HOME -u $UID
+RUN addgroup -g ${GID} ${GROUP} \
+    && adduser -D $USER -h $HOME -u $UID -G ${GROUP}
+
 USER ${USER}
 WORKDIR $HOME
 
 COPY composer.json ./
 COPY composer.lock ./
-
-RUN composer install \ 
-    && mkdir artifacts
+RUN composer install
