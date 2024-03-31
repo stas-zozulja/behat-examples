@@ -1,4 +1,4 @@
-default:
+google:
   extensions:
     DrevOps\BehatScreenshotExtension: 
       dir: '%paths.base%/artifacts'
@@ -24,7 +24,7 @@ default:
     google:
       mink_session: chrome
       paths:
-        - '%paths.base%/../scenarios/google'
+        - '%paths.base%/scenarios/google'
       contexts:
         - DrevOps\BehatScreenshotExtension\Context\ScreenshotContext: ~
         - Behat\MinkExtension\Context\MinkContext: ~
