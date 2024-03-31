@@ -18,3 +18,7 @@ jobs:
         run: make wait-env
       - name: Start tests
         run: make start-test     
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: artifacts

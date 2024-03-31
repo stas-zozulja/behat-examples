@@ -13,6 +13,7 @@
         "behat/behat": "^3.14",
         "friends-of-behat/mink-extension": "^2.7",
         "ediasoft/mink-selenium4-driver": "^1.0",
-        "instaclick/php-webdriver": "2.0.x-dev"
+        "instaclick/php-webdriver": "2.0.x-dev",
+        "drevops/behat-screenshot": "^1.4"
     }
 }
