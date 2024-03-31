@@ -11,11 +11,11 @@ jobs:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build environment
-        run: make build-env
+        run: make ENV=ci build-env
       - name: Start environment
-        run: make start-env
+        run: make ENV=ci start-env
       - name: Wait environment to be ready
-        run: make wait-env
+        run: make ENV=ci wait-env
       - name: check file permissions
         run: docker compose exec behat ls -la 
       - name: check file permissions1
@@ -23,7 +23,7 @@ jobs:
       - name: check file permissions2
         run: id
       - name: Run tests
-        run: make run-tests
+        run: make ENV=ci run-tests
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
