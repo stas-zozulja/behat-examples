@@ -18,7 +18,7 @@ start-env:
 
 # wait for selenium hub 
 wait-env:
-	bin/wait.sh
+	bin/wait-for-grid.sh
 
 # start selenium tests
 run-tests:

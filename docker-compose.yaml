@@ -46,7 +46,6 @@ services:
   behat:
     depends_on:
       - selenium-hub
-    user: ${UID}:${GID}
     stdin_open: true
     tty: true
     volumes:
