@@ -12,12 +12,14 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Build environment
         run: make build-env
-      - name: check file permissions
-        run: docker compose run behat ls -la 
       - name: Start environment
         run: make start-env
       - name: Wait environment to be ready
         run: make wait-env
+      - name: check file permissions
+        run: docker compose exec behat ls -la 
+      - name: check file permissions1
+        run: docker compose exec id
       - name: Run tests
         run: make run-tests
       - name: Upload artifacts

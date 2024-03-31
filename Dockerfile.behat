@@ -26,5 +26,4 @@ WORKDIR $HOME
 COPY composer.json ./
 COPY composer.lock ./
 
-RUN composer install \
-    && mkdir artifacts
+RUN composer install
