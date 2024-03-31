@@ -46,6 +46,9 @@ services:
   behat:
     depends_on:
       - selenium-hub
+    user: ${UID}:${GID}
+    stdin_open: true
+    tty: true
     volumes:
       - ./composer.json:/home/${TESTER_USER}/composer.json
       - ./composer.lock:/home/${TESTER_USER}/composer.lock

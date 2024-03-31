@@ -17,10 +17,9 @@ COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 # create unprivileged user
 ARG UID=1000
 ARG USER=default
-ARG GROUP=default
 ARG HOME=/home/$USER
 
-RUN adduser -D $USER -h $HOME -u $UID 
+RUN adduser -D $USER -h $HOME -u $UID
 USER ${USER}
 WORKDIR $HOME
 

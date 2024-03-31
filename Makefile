@@ -12,7 +12,7 @@ wait-env:
 
 # start selenium tests
 run-tests:
-	docker compose run behat vendor/bin/behat --profile=google
+	docker compose exec behat vendor/bin/behat --profile=google
 
 # stop environment  
 stop-env:
