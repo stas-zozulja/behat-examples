@@ -19,7 +19,7 @@ jobs:
       - name: check file permissions
         run: docker compose exec behat ls -la 
       - name: check file permissions1
-        run: docker compose exec id
+        run: docker compose exec behat id
       - name: Run tests
         run: make run-tests
       - name: Upload artifacts
