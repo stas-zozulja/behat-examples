@@ -10,9 +10,9 @@ start-env:
 wait-env:
 	bin/wait.sh
 
-# start selenium test inside of the container 
-start-test:
-	docker compose run behat vendor/bin/behat
+# start selenium tests
+run-tests:
+	docker compose run behat vendor/bin/behat --profile=google
 
 # stop environment  
 stop-env:
