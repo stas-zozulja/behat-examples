@@ -24,5 +24,5 @@ Scenario Outline:
     | de     | Alle ablehnen | Alle akzeptieren  | Suche                 | Google Suche       | Auf gut Glück!            |
     | es     | Rechazar todo | Aceptar todo      | Buscar                | Buscar con Google  | Voy a tener suerte        |
     | fr     | Tout refuser  | Tout accepter     | Rechercher            | Recherche Google   | J'ai de la chance         |
-    | uk     | Відхилити всі | Прийняти всі      | Пошук                 | Пошук Google       | Мені пощастить            |
+    | uk     | Відхилити всі | Прийняти всі      | Пошуs                 | Пошук Google       | Мені пощастить            |
     | it     | Rifiuta tutto | Accetta tutto     | Cerca                 | Cerca con Google   | Mi sento fortunato        |
